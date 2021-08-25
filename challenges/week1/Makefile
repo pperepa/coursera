@@ -1,5 +1,5 @@
-EXE = main
-OBJS = main.o Cube.o
+EXE = week1
+OBJS = week1.o
 CLEAN_RM =
 
-include ../_make/generic.mk
+include ../../_make/generic.mk

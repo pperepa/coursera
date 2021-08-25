@@ -1,7 +1,20 @@
+#include <iostream>
+/* Create a class called Pair that has two public integer member variables named "a" and "b", and a public member
+    * function named sum() that has no arguments but adds the two member variables together and returns their sum. 
+*/
 // You should define Pair here:
-// (Use as many lines as you need!)
-// ...
-// ...
+class Pair
+{
+public:
+    int a;
+    int b;
+    int sum();
+};
+
+int Pair::sum()
+{
+    return (a + b);
+}
 
 // This main() function will help you test your work.
 // Click Run to see what happens.

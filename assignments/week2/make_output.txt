@@ -1,0 +1,18 @@
+1037 pranavperepa  8:47AM| >> make
+g++  -std=c++14   -g -O0 -pedantic -Wall -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -MMD -MP -msse2 -c main.cpp -o .objs/main.o
+g++ .objs/main.o  -std=c++14   -lpthread -o main
+
+ Built the main executable program file for the project:  main
+ (Make sure you try "make test" too!)
+
+1038 pranavperepa  8:48AM| >> make test
+g++  -std=c++14   -g -O0 -pedantic -Wall -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -MMD -MP -msse2 -c tests/part1.cpp -o .objs/tests/part1.o
+g++  -std=c++14   -g -O0 -pedantic -Wall -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -MMD -MP -msse2 -c uiuc/catch/catchmain.cpp -o .objs/uiuc/catch/catchmain.o
+make[1]: `main' is up to date.
+g++ .objs/tests/part1.o .objs/uiuc/catch/catchmain.o  -std=c++14   -lpthread -o test
+
+ Built the test suite program:  test
+
+1039 pranavperepa  8:48AM| >> ./test
+===============================================================================
+All tests passed (3 assertions in 3 test cases)

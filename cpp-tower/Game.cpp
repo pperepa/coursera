@@ -1,6 +1,6 @@
 /**
  * C++ class for a game of the Tower of Hanoi puzzle.
- * 
+ *
  * @author
  *   Wade Fagen-Ulmschneider <waf@illinois.edu>
  */
@@ -16,7 +16,16 @@ using std::endl;
 
 // Solves the Tower of Hanoi puzzle.
 // (Feel free to call "helper functions" to help you solve the puzzle.)
-void Game::solve() {
+
+/* void Game::solve() {
+  // Prints out the state of the game:
+  cout << *this << endl;
+
+  // @TODO -- Finish solving the game!
+}*/
+
+void Game::solve()
+{
   // Prints out the state of the game:
   cout << *this << endl;
 
@@ -24,11 +33,13 @@ void Game::solve() {
 }
 
 // Default constructor to create the initial state:
-Game::Game() {
+Game::Game()
+{
   // Create the three empty stacks:
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 3; i++)
+  {
     Stack stackOfCubes;
-    stacks_.push_back( stackOfCubes );
+    stacks_.push_back(stackOfCubes);
   }
 
   // Create the four cubes, placing each on the [0]th stack:
@@ -45,8 +56,10 @@ Game::Game() {
   stacks_[0].push_back(yellow);
 }
 
-std::ostream& operator<<(std::ostream & os, const Game & game) {
-  for (unsigned i = 0; i < game.stacks_.size(); i++) {
+std::ostream &operator<<(std::ostream &os, const Game &game)
+{
+  for (unsigned i = 0; i < game.stacks_.size(); i++)
+  {
     os << "Stack[" << i << "]: " << game.stacks_[i];
   }
   return os;

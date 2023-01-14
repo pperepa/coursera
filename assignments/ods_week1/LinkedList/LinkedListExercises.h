@@ -309,7 +309,6 @@ LinkedList<T> LinkedList<T>::merge(const LinkedList<T> &other) const
   // "other" refers to the list that was passed as an argument:
   LinkedList<T> left = *this;
   LinkedList<T> right = other;
-
   // So if this function was called as "A.merge(B)", then now, "left"
   // is a temporary copy of the "A" and "right" is a temporary copy
   // of the "B".
@@ -319,6 +318,74 @@ LinkedList<T> LinkedList<T>::merge(const LinkedList<T> &other) const
   // the function.
   LinkedList<T> merged;
 
+  // Base Cases
+  // Left list empty, right list not empty.
+  if (left.empty() && !right.empty())
+  {
+    for (int i = right.size(); i > 0; i--)
+    {
+      merged.pushBack(right.front());
+      right.popFront();
+    }
+    return merged;
+  }
+  // Left list not empty, right list empty.
+  else if (!left.empty() && right.empty())
+  {
+    for (int i = left.size(); i > 0; i--)
+    {
+      merged.pushBack(left.front());
+      left.popFront();
+    }
+    return merged;
+  }
+  // Left and right list both empty.
+  else if (left.empty() && right.empty())
+  {
+    return merged;
+  }
+  else if (!left.empty() && !right.empty())
+  {
+    // Recursive Case
+    T leftFront = left.front();
+    T rightFront = right.front();
+    if (leftFront < rightFront)
+    {
+      merged.pushBack(leftFront);
+      left.popFront();
+      LinkedList<T> temp = left.merge(right);
+      for (int i = temp.size(); i > 0; i--)
+      {
+        merged.pushBack(temp.front());
+        temp.popFront();
+      }
+    }
+    else if (leftFront > rightFront)
+    {
+      merged.pushBack(rightFront);
+      right.popFront();
+      LinkedList<T> temp = left.merge(right);
+      for (int i = temp.size(); i > 0; i--)
+      {
+        merged.pushBack(temp.front());
+        temp.popFront();
+      }
+    }
+    else
+    {
+      merged.pushBack(leftFront);
+      merged.pushBack(rightFront);
+      left.popFront();
+      right.popFront();
+      LinkedList<T> temp = left.merge(right);
+      for (int i = temp.size(); i > 0; i--)
+      {
+        merged.pushBack(temp.front());
+        temp.popFront();
+      }
+    }
+  }
+  return merged;
   // -----------------------------------------------------------
   // TODO: Your code here!
   // -----------------------------------------------------------
@@ -349,5 +416,4 @@ LinkedList<T> LinkedList<T>::merge(const LinkedList<T> &other) const
   // notice that all of our nodes are created on the heap? The part of the
   // list that we pass back is really small; it just contains two pointers
   // and an int.)
-  return merged;
 }
